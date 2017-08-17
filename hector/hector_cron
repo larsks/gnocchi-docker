@@ -1,8 +1,13 @@
 #!/bin/sh
 
+: ${GNOCCHI_URL:=http://gnocchi-api:8041}
+: ${GNOCCHI_INSTANCE_NAME:=bugzilla}
+
 hector-gnocchi -f /etc/hector/config.json -v \
 	--bugzilla-url "https://bugzilla.redhat.com" \
 	--bugzilla-username "$BUGZILLA_USERNAME" \
 	--bugzilla-password "$BUGZILLA_PASSWORD" \
 	--gnocchi-username admin \
-	--gnocchi-url http://gnocchi-api:8041 > /dev/console 2>&1
+	--gnocchi-url "$GNOCCHI_URL" \
+	--gnocchi-instance-name "$GNOCCHI_INSTANCE_NAME" \
+	> /var/log/hector.log 2>&1

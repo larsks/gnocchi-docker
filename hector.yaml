@@ -5,7 +5,11 @@ services:
     image: larsks/hector
     build:
       context: hector
-    env_file:
-      - bugzilla.env
     depends_on:
       - gnocchi-api
+
+    # set these inside a .env file in your docker-compose directory
+    environment:
+      BUGZILLA_USERNAME: ${BUGZILLA_USERNAME}
+      BUGZILLA_PASSWORD: ${BUGZILLA_PASSWORD}
+      GNOCCHI_INSTANCE_NAME: ${GNOCCHI_INSTANCE_NAME}

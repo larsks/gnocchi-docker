@@ -15,11 +15,3 @@ curl -vv -# \
     -H "Content-Type: application/json" \
     -d @/datasource.json \
     ${GRAFANA_URL}/datasources
-
-
-echo "Creating dashboard..."
-curl -vv -# \
-    -H "Accept: application/json" \
-    -H "Content-Type: application/json" \
-    -d @/dashboard.json \
-    ${GRAFANA_URL}/dashboards/db

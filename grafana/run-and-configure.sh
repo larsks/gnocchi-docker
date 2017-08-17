@@ -3,9 +3,7 @@
 set -x
 set -e
 
-if [ ! "$GF_INSTALL_PLUGINS" ]; then
-    /install-plugin.sh
-fi
+/install-plugin.sh
 /run.sh &
 
 while [[ $( curl -Lk --noproxy '*' -s -o /dev/null -w '%{http_code}' http://localhost:3000 ) != 200 || $? -eq 7 ]]; do

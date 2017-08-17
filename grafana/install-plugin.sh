@@ -7,6 +7,6 @@ set -x
 mkdir -p ${GF_PATHS_PLUGINS}
 cd ${GF_PATHS_PLUGINS}
 
-URL=$(curl https://api.github.com/repos/gnocchixyz/grafana-gnocchi-datasource/releases/latest | awk -F'"' '/browser_download_url/{print $4}')
-curl -qL $URL -o  /gnocchixyz-gnocchi-datasource.tar.gz
-tar -xf /gnocchixyz-gnocchi-datasource.tar.gz
+git clone -b feature/names \
+	https://github.com/larsks/grafana-gnocchi-datasource \
+	gnocchixyz-gnocchi-datasource

@@ -3,6 +3,14 @@ Interval {{ COLLECTD_INTERVAL }}
 Timeout 2
 ReadThreads 5
 
+LoadPlugin logfile
+<Plugin logfile>
+  LogLevel info
+  File stdout
+  PrintSeverity true
+  Timestamp true
+</Plugin>
+
 LoadPlugin python
 <Plugin python>
   Import "collectd_gnocchi"

@@ -50,8 +50,6 @@ services:
       - gnocchi-api
     volumes:
       - grafana-volume:/var/lib/grafana
-    links:
-      - "gnocchi-api:gnocchi"
 
   collectd:
     image: collectd
@@ -59,6 +57,8 @@ services:
       context: collectd
     environment:
       COLLECTD_INTERVAL: 10
+    env_file:
+      - bugzilla.env
     depends_on:
       - gnocchi-api
 

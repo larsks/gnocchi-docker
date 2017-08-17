@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  collectd:
+    image: collectd
+    build:
+      context: collectd
+    environment:
+      COLLECTD_INTERVAL: 10
+    env_file:
+      - bugzilla.env
+    depends_on:
+      - gnocchi-api
+

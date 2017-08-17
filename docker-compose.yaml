@@ -3,9 +3,13 @@ version: "2"
 services:
   indexer:
     image: postgres
+    volumes:
+      - storage-volume:/var/lib/postgresql/data
 
   storage:
     image: redis
+    volumes:
+      - indexer-volume:/data
 
   gnocchi-metricd:
     image: gnocchi
@@ -51,17 +55,8 @@ services:
     volumes:
       - grafana-volume:/var/lib/grafana
 
-  collectd:
-    image: collectd
-    build:
-      context: collectd
-    environment:
-      COLLECTD_INTERVAL: 10
-    env_file:
-      - bugzilla.env
-    depends_on:
-      - gnocchi-api
-
 volumes:
   metrics-volume:
   grafana-volume:
+  storage-volume:
+  indexer-volume:

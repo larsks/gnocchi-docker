@@ -12,6 +12,7 @@ RUN apt-get update -y && apt-get install -y \
  && rm -rf /var/lib/apt/lists/*
 
 RUN pip install envtpl collectd-gnocchi
+RUN pip install git+https://github.com/larsks/hector-the-collector
 COPY collectd.conf.tpl /etc/collectd
 COPY run.sh /
 CMD /run.sh

@@ -31,7 +31,7 @@ services:
     build:
       context: gnocchi
     ports:
-      - "8041:8041"
+      - "127.0.0.1:8041:8041"
     depends_on:
       - indexer
       - storage

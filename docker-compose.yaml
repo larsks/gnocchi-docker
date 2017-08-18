@@ -4,12 +4,12 @@ services:
   indexer:
     image: postgres
     volumes:
-      - storage-volume:/var/lib/postgresql/data
+      - indexer-volume:/var/lib/postgresql/data
 
   storage:
     image: redis
     volumes:
-      - indexer-volume:/data
+      - storage-volume:/data
 
   gnocchi-metricd:
     image: gnocchi

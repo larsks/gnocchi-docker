@@ -5,11 +5,15 @@ services:
     image: postgres
     volumes:
       - indexer-volume:/var/lib/postgresql/data
+    restart: on-failure
+
 
   storage:
     image: redis
     volumes:
       - storage-volume:/data
+    restart: on-failure
+
 
   gnocchi-metricd:
     image: gnocchi
@@ -23,6 +27,8 @@ services:
     volumes:
       - metrics-volume:/var/lib/gnocchi
     entrypoint: /run-gnocchi.sh metricd
+    restart: on-failure
+
 
   gnocchi-api:
     image: gnocchi
@@ -39,6 +45,8 @@ services:
     volumes:
       - metrics-volume:/var/lib/gnocchi
     entrypoint: /run-gnocchi.sh api
+    restart: on-failure
+
 
   grafana:
     image: gnocchixyz/grafana
@@ -55,6 +63,8 @@ services:
       - gnocchi-api
     volumes:
       - grafana-volume:/var/lib/grafana
+    restart: on-failure
+
 
 volumes:
   metrics-volume:
